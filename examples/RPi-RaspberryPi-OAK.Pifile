@@ -11,7 +11,7 @@ RUN apt-get install -y curl git
 RUN  curl -fL https://docs.luxonis.com/install_dependencies.sh | bash
 
 RUN git clone -b c0d306db16bd76a98ca9b96297e21668c3176277 https://github.com/luxonis/depthai-python.git /home/pi/depthai-python
-RUN cd /home/pi/depthai-python && curl -fL https://cdn.jsdelivr.net/gh/luxonis/depthai-python@c0d306db16bd76a98ca9b96297e21668c3176277/examples/install_requirements.py | python3
+#RUN cd /home/pi/depthai-python && curl -fL https://cdn.jsdelivr.net/gh/luxonis/depthai-python@c0d306db16bd76a98ca9b96297e21668c3176277/examples/install_requirements.py | python3
 
 RUN git clone -b v3.0.8 https://github.com/luxonis/depthai.git /home/pi/depthai
 RUN cd /home/pi/depthai && curl -fL https://cdn.jsdelivr.net/gh/luxonis/depthai@v3.0.8/install_requirements.py | python3
