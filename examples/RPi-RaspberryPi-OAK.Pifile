@@ -1,0 +1,19 @@
+FROM https://mirrors.tuna.tsinghua.edu.cn/raspberry-pi-os-images/raspios_armhf/images/raspios_armhf-2021-05-28/2021-05-07-raspios-buster-armhf.zip
+
+# https://mirrors.tuna.tsinghua.edu.cn/raspberry-pi-os-images/raspios_armhf/images/raspios_armhf-2021-11-08/2021-10-30-raspios-bullseye-armhf.zip
+
+PUMP 400M
+
+RUN apt-get update
+RUN apt-get install -y curl 
+
+# install_dependencies
+RUN bash -c "
+    curl -fL https://docs.luxonis.com/install_dependencies.sh | bash
+"
+
+RUN git clone -b c0d306db16bd76a98ca9b96297e21668c3176277 https://github.com/luxonis/depthai-python.git /home/pi/depthai-python
+RUN cd /home/pi/depthai-python && curl -fL https://github.com/luxonis/depthai-python/blob/c0d306db16bd76a98ca9b96297e21668c3176277/examples/install_requirements.py | python3
+
+RUN git clone -b v3.0.8 https://github.com/luxonis/depthai.git /home/pi/depthai
+RUN cd /home/pi/depthai && curl -fL https://github.com/luxonis/depthai/blob/v3.0.8/install_requirements.py | python3
